@@ -7,7 +7,8 @@ namespace MyDiabetesAPI.Entities
     {
         public int Id { get; set; }
         public int Waarde1 { get; set; }
-        public int? Insuline { get; set; }
+        public int? Bolus { get; set; }
+        public int? Basal { get; set; }
         public string Type { get; set; }
         public DateTime Moment { get; set; }
     }

@@ -53,7 +53,8 @@ namespace MyDiabetesAPI.Controllers
                     Waarde newWaarde = new Waarde()
                     {
                         Waarde1 = waarde.Waarde1,
-                        Insuline = waarde.Insuline,
+                       Bolus = waarde.Bolus,
+                       Basal = waarde.Basal,
                         Type = waarde.Type
                         
                     };
@@ -82,7 +83,8 @@ namespace MyDiabetesAPI.Controllers
                 if(oldWaarde != null)
                 {
                     oldWaarde.Waarde1 = changedWaarde.Waarde1;
-                    oldWaarde.Insuline = changedWaarde.Insuline;
+                    oldWaarde.Bolus = changedWaarde.Bolus;
+                    oldWaarde.Basal = changedWaarde.Basal;
                     oldWaarde.Type = changedWaarde.Type;
 
                     db.Waarde.Update(oldWaarde);
