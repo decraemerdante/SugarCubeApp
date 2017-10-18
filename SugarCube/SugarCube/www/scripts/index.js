@@ -10,7 +10,8 @@
     function Waarde() {
         this.id;
         this.value;
-        this.insuline;
+        this.bolus;
+        this.basal;
         this.type;
         this.moment;
 
@@ -49,7 +50,8 @@
         var tableString = "<tr>" +
             "<th>Date</th>" +
             "<th>Value</th>" +
-            "<th>Insulin</th>" +
+            "<th>Bolus</th>" +
+            "<th>Basal</th>" +
             "<th>Type</th>" +
             "</tr>";
 
@@ -57,7 +59,8 @@
            tableString += "<tr>" +
                 "<td>" + data[i].moment + "</td>" +
                 "<td>" + data[i].waarde1 + "</td>" +
-                "<td>" + data[i].insuline + "</td>" +
+               "<td>" + data[i].bolus + "</td>" +
+               "<td>" + data[i].basal + "</td>" +
                 "<td>" + getType(data[i].type) + "</td>" +
                 "</tr>";
         }
