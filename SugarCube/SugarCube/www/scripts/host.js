@@ -1,3 +1,3 @@
 ﻿function host() {
-    return "http://localhost:1709";
+    return "http://sugarcube.azurewebsites.net";
 }
