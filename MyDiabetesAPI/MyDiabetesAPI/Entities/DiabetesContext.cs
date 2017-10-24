@@ -9,7 +9,7 @@ namespace MyDiabetesAPI.Entities
         public virtual DbSet<Setting> Setting { get; set; }
         public virtual DbSet<Waarde> Waarde { get; set; }
 
-       public DiabetesContext(DbContextOptions<DiabetesContext> options) : base(options) { }
+        public DiabetesContext(DbContextOptions<DiabetesContext> options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -24,9 +24,15 @@ namespace MyDiabetesAPI.Entities
 
             modelBuilder.Entity<Waarde>(entity =>
             {
-                entity.Property(e => e.Moment)
-                    .HasColumnType("smalldatetime")
+                entity.Property(e => e.Basal).HasDefaultValueSql("0");
+
+                entity.Property(e => e.Bolus).HasDefaultValueSql("0");
+
+                entity.Property(e => e.Date)
+                    .HasColumnType("date")
                     .HasDefaultValueSql("getdate()");
+
+                entity.Property(e => e.Time).HasDefaultValueSql("getutcdate()");
 
                 entity.Property(e => e.Type)
                     .IsRequired()

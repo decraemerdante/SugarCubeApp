@@ -5,18 +5,23 @@ function fillInTable(data) {
     var div = $("#waardeTable");
 
     var tableString = "<thead><tr>" +
-        "<th data-priority='1'>Date</th>" +
-        "<th data-priority='2'>Value</th>" +       
+        "<th data-priority='1'>Time</th>" +
+        "<th data-priority='persistent'>Value</th>" +       
         "</tr></thead><tbody>";
 
-    for (var i = 0; i < l; i++) {
-        tableString += "<tr>" +
-            "<th>" + data[i].moment + "</th>" +
-            "<td>" + data[i].waarde1 + "</td>" +
-            "<td><span class='glyphicon glyphicon-chevron-right'><span></td>"
-            "</tr>";
-    }
-    tableString += "</tbody>"
+    var groupByDate = groupByDateNow(data);
+    console.log(groupByDate);
+    Object.keys(groupByDate).forEach(function (category) {
+        tableString += "<tr><td class='dates' colspan='2'>" + getDate(category) + "</td></tr>";
+
+        groupByDate[category].forEach(function (memb, i) {
+
+            tableString += "<tr><td>" + getTime(memb.time) + "</td>" +
+                "<td>" + memb.waarde1 + "</td></tr>"
+
+        });
+    });
+    tableString += "</tbody>";
 
     div.append(tableString);
 }
@@ -30,4 +35,31 @@ function getType(type) {
 
         default: return "Extra";
     }
+
+    
 }
+
+function groupByDateNow(data) {
+    var groupBy = function (xs, key) {
+        return xs.reduce(function (rv, x) {
+            (rv[x[key]] = rv[x[key]] || []).push(x);
+            return rv;
+        }, {});
+    };
+    return groupBy(data, 'date')
+    console.log(groubedByTeam);
+}
+
+
+function getTime(dateTime) {
+    var myTime = dateTime.substr(0, 5);
+
+    return myTime;
+}
+
+function getDate(date) {
+    var myDate = date.substr(0, 10);
+
+    return myDate;
+}
+
