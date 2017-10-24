@@ -1,9 +1,15 @@
-td{
-    background-color: white;
-    color: black;
+.dates {
+    background-color: #ee6e73;
+    color: white;
+    text-align: right;
 }
 
-.dates{
-    background-color: dodgerblue;
-    color: white;
+
+#waardeTable {
+    margin-top: 10%;
+    text-align: center;
 }
+
+    #waardeTable p {
+        text-align: center;
+    }
