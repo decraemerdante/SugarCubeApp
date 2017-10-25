@@ -10,16 +10,16 @@
     text-align: center;
 }
 
-    #waardeTable p {
+#waardeTable p {
         text-align: center;
-    }
+}
 
-.addButton {
+.buttonsColor {
     background-color: #ee6e73;
    
 }
 
-.add {
+.buttonsPos {
     position: fixed;
     bottom: 5%;
     right: 5%;

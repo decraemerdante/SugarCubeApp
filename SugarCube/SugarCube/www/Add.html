@@ -28,40 +28,57 @@
     </header>
 
     <div class="row">
-        <form class="col s12">
+        <form class="col s12 addForm" action="index.html">
             <div class="row">
                 <div class="input-field col s12">
-                    <input  id="Value" type="text" class="validate">
+                    <input id="Value" type="text" class="validate">
                     <label for="Value">Value</label>
                 </div>
-                </div>
+            </div>
             <div class="row">
                 <div class="input-field col s6">
-                    <input  id="Bolus" type="text" class="validate">
+                    <input id="Bolus" type="text" class="validate">
                     <label for="Bolus">Bolus</label>
                 </div>
                 <div class="input-field col s6">
-                    <input  id="Basal" type="text" class="validate">
+                    <input id="Basal" type="text" class="validate">
                     <label for="Basal">Basal</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s6">
-                    <input id="Date" type="text" class="validate">
-                    <label for="Date">Date</label>
+                    <input type="text" class="datepicker">
+                    <label for="datepicker">Date &amp; Time</label>
                 </div>
                 <div class="input-field col s6">
-                    <input id="Time" type="text" class="validate">
-                    <label for="Time">Time</label>
+                    <input type="text" placeholder="Time" class="timepicker">
+
                 </div>
             </div>
-            
-    </form>
-    </div>
-                <script src="scripts/jquery-3.2.1.min.js"></script>
-                <script src="scripts/materialize.min.js"></script>
-                <script src="scripts/host.js"></script>
-                <script src="scripts/ajaxCalls.js"></script>
-                <script src="scripts/add.js"></script>
+            <div class="row">
+                <div class="input-field col s12">
+                    <select>
+                        <option value="" disabled selected>Choose your type</option>
+                        <option value="B">Breakfast</option>
+                        <option value="L">Lunch</option>
+                        <option value="D">Dinner</option>
+                        <option value="E">Extra</option>
+                    </select>
+                    <label>Type</label>
+                </div>
+            </div>
+
+           
+
+        </form>
+        </div>
+        <a href="#" class="btn-floating btn-large scale-transition buttonsPos">
+            <i class="material-icons submitButton buttonsColor">done</i>
+        </a>
+                    <script src="scripts/jquery-3.2.1.min.js"></script>
+                    <script src="scripts/materialize.min.js"></script>
+                    <script src="scripts/host.js"></script>
+                    <script src="scripts/ajaxCalls.js"></script>
+                    <script src="scripts/add.js"></script>
 </body>
 </html>

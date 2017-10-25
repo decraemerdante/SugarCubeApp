@@ -5,43 +5,55 @@
     var time;
 
     document.addEventListener('deviceready', onDeviceReady.bind(this), false);
+    function init() {
+        fillInTimeDate();
+        $(".submitButton").click(function (e) {
+            e.preventDefault();
+            $(".addForm").submit();
 
-    fillInTimeDate();
+        });
+        $('select').material_select();
+    }
+    init();
     function fillInTimeDate() {
-        console.log("Hi");
-        date = getDateToday();
-        time = getTimeNow();
 
-        document.getElementById("Date").setAttribute('value', date);
-        document.getElementById("Time").setAttribute('value', time);
+       
+
+       var picker = $('.datepicker').pickadate({
+            selectMonths: true, // Creates a dropdown to control month
+            selectYears: 15, // Creates a dropdown of 15 years to control year,
+            today: 'Today',
+            clear: 'Clear',
+            close: 'Ok',
+            onStart: function () {
+                var date = new Date();
+                this.set('select', [date.getFullYear(), date.getMonth() + 1, date.getDate()]);
+            },           
+            closeOnSelect: false // Close upon selecting a date,
+        });
+      
+        $('.timepicker').pickatime({
+            default: 'now',// Set default time: 'now', '1:30AM', '16:30'
+            fromnow: 0,       // set default time to * milliseconds from now (using with default = 'now')
+            twelvehour: false, // Use AM/PM or 24-hour format
+            donetext: 'OK', // text for done-button
+            cleartext: 'Clear', // text for clear-button
+            canceltext: 'Cancel', // Text for cancel-button
+            autoclose: false, // automatic close timepicker
+            ampmclickable: true, // make AM PM clickable
+            
+            aftershow: function () { },
+               
+        });
     }
 
-    function getDateToday() {
-        var today = new Date();
-        var dd = today.getDate();
-        var mm = today.getMonth() + 1; //January is 0!
-        var yyyy = today.getFullYear();
+  
 
-        if (dd < 10) {
-            dd = '0' + dd
-        }
-
-        if (mm < 10) {
-            mm = '0' + mm
-        }
-
-        today = dd + '/' + mm + '/' + yyyy;
-        return today;
-    }
-
-    function getTimeNow() {
-
-        return new Date(new Date().getTime()).toLocaleTimeString(); // 11:18:48 AM
-    }
+   
 
 
     function onDeviceReady() {
-        fillInTimeDate();
+        init();
 
     };
 
