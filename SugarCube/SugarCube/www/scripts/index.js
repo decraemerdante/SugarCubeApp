@@ -8,16 +8,7 @@
    
     document.addEventListener('deviceready', onDeviceReady.bind(this), false);
 
-    function Waarde() {
-        this.id;
-        this.value;
-        this.bolus;
-        this.basal;
-        this.type;
-        this.moment;
-
-    }
-
+   
   
 
     function onDeviceReady() {

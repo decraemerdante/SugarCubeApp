@@ -1,17 +1,13 @@
 ﻿(function () {
 
-
+   
     var date;
     var time;
 
     document.addEventListener('deviceready', onDeviceReady.bind(this), false);
     function init() {
         fillInTimeDate();
-        $(".submitButton").click(function (e) {
-            e.preventDefault();
-            $(".addForm").submit();
-
-        });
+        $(".submitButton").click(submit);
         $('select').material_select();
     }
     init();
@@ -23,11 +19,12 @@
             selectMonths: true, // Creates a dropdown to control month
             selectYears: 15, // Creates a dropdown of 15 years to control year,
             today: 'Today',
+            format:"dd/mm/yyyy",
             clear: 'Clear',
             close: 'Ok',
             onStart: function () {
                 var date = new Date();
-                this.set('select', [date.getFullYear(), date.getMonth() + 1, date.getDate()]);
+                this.set('select', [date.getFullYear(), date.getMonth(), date.getDate()]);
             },           
             closeOnSelect: false // Close upon selecting a date,
         });
@@ -56,6 +53,26 @@
         init();
 
     };
+    function submit(e) {
+        e.preventDefault();
+        var e = document.getElementById("Type");
+        var value = {
+            Waarde1: $("#Value").val(),
+            Bolus: $("#Bolus").val(),
+            Basal: $("#Basal").val(),
+            Date: $(".datepicker").val(),
+            Time: $(".timepicker").val(),
+            Type: e.options[e.selectedIndex].value
+        }
 
+        sendNewValue(JSON.stringify(value));
+      
+            $(".addForm").submit();
+            Materialize.toast('New Value added', 4000); 
+        
+       
+       
+       
+    }
 
 })();

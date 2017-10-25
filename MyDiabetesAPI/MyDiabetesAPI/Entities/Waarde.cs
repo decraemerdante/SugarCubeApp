@@ -10,7 +10,7 @@ namespace MyDiabetesAPI.Entities
         public int Bolus { get; set; }
         public int Basal { get; set; }
         public string Type { get; set; }
-        public TimeSpan Time { get; set; }
-        public DateTime Date { get; set; }
+        public string Time { get; set; }
+        public string Date { get; set; }
     }
 }

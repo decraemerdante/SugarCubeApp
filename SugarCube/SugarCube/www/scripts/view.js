@@ -1,16 +1,20 @@
 ﻿
 
 function fillInTable(data) {
+    var newData = data;
     var l = data.length;
     var div = $("#waardeTable");
 
     var tableString = "<tbody>";
          
-        
+  
 
-    var groupByDate = groupByDateNow(data);
+    var groupByDate = groupByDateNow(newData);
     console.log(groupByDate);
+    
+    
     Object.keys(groupByDate).sort().reverse().forEach(function (category) {
+        
         tableString += "<tr><td class='dates' colspan='4'>" + getDate(category) + "</td></tr>";
         tableString += "<tr><td></td><td></td><td>Bolus</td><td>Basal</td></tr>";
         groupByDate[category].forEach(function (memb, i) {
@@ -42,13 +46,21 @@ function getType(type) {
 }
 
 function groupByDateNow(data) {
+    var newData = data;
+
+    for (i = 0; i < newData.length; i++) {
+        var formatDate = dateFormat(newData[i].date);
+        newData[i].date = formatDate;
+    }
+
+
     var groupBy = function (xs, key) {
         return xs.reduce(function (rv, x) {
             (rv[x[key]] = rv[x[key]] || []).push(x);
             return rv;
         }, {});
     };
-    return groupBy(data, 'date')
+    return groupBy(newData, 'date')
     console.log(groubedByTeam);
 }
 
@@ -60,9 +72,11 @@ function getTime(dateTime) {
 }
 
 function getDate(date) {
-    var myDate = date.substr(0, 10);
-
-    return getDateFull(new Date(myDate));
+    console.log(date);
+    
+ 
+    
+    return getDateFull(new Date(date));
 }
 
 var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -71,6 +85,13 @@ function getDateFull(date) {
     return(days[date.getDay()] + ' ' + months[date.getMonth()] + ' ' + date.getDate() + ' ' + date.getFullYear()); //Tuesday February 12 2013
 
 
+}
+
+function dateFormat(date) {
+    var parts = date.split('/');
+    //please put attention to the month (parts[0]), Javascript counts months from 0:
+    // January - 0, February - 1, etc
+    return new Date(parts[2], parts[1] - 1, parts[0]).toISOString().slice(0, 10); 
 }
 
 

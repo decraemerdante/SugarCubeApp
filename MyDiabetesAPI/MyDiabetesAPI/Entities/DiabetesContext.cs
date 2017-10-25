@@ -24,15 +24,13 @@ namespace MyDiabetesAPI.Entities
 
             modelBuilder.Entity<Waarde>(entity =>
             {
-                entity.Property(e => e.Basal).HasDefaultValueSql("0");
-
-                entity.Property(e => e.Bolus).HasDefaultValueSql("0");
-
                 entity.Property(e => e.Date)
-                    .HasColumnType("date")
-                    .HasDefaultValueSql("getdate()");
+                    .IsRequired()
+                    .HasColumnType("text");
 
-                entity.Property(e => e.Time).HasDefaultValueSql("getutcdate()");
+                entity.Property(e => e.Time)
+                    .IsRequired()
+                    .HasColumnType("text");
 
                 entity.Property(e => e.Type)
                     .IsRequired()
