@@ -17,7 +17,9 @@
         this.moment;
 
     }
-    getAllValues(host());
+
+  
+
     function onDeviceReady() {
         getAllValues(host());
 
@@ -28,4 +30,4 @@
    
    
     
-} )();
+})(getAllValues(host()));

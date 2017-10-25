@@ -13,3 +13,14 @@
     #waardeTable p {
         text-align: center;
     }
+
+.addButton {
+    background-color: #ee6e73;
+   
+}
+
+.add {
+    position: fixed;
+    bottom: 5%;
+    right: 5%;
+}
