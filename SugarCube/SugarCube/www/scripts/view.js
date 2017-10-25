@@ -49,7 +49,9 @@ function groupByDateNow(data) {
     var newData = data;
 
     for (i = 0; i < newData.length; i++) {
+        
         var formatDate = dateFormat(newData[i].date);
+       
         newData[i].date = formatDate;
     }
 
@@ -89,9 +91,14 @@ function getDateFull(date) {
 
 function dateFormat(date) {
     var parts = date.split('/');
+    var newDaypart = parseInt(parts[0]);
+    newDaypart += 1;
+
+    console.log(parts);
     //please put attention to the month (parts[0]), Javascript counts months from 0:
     // January - 0, February - 1, etc
-    return new Date(parts[2], parts[1] - 1, parts[0]).toISOString().slice(0, 10); 
+    console.log(new Date(parts[2], parts[1] - 1, parts[0]).toISOString().slice(0, 11));
+    return new Date(parts[2], parts[1] -1, newDaypart.toString()).toISOString().slice(0, 10); 
 }
 
 

@@ -68,7 +68,7 @@
         sendNewValue(JSON.stringify(value));
       
             $(".addForm").submit();
-            Materialize.toast('New Value added', 4000); 
+            Materialize.toast('New Value added', 10000); 
         
        
        
