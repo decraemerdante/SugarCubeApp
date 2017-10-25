@@ -10,7 +10,7 @@ function fillInTable(data) {
 
     var groupByDate = groupByDateNow(data);
     console.log(groupByDate);
-    Object.keys(groupByDate).forEach(function (category) {
+    Object.keys(groupByDate).sort().reverse().forEach(function (category) {
         tableString += "<tr><td class='dates' colspan='4'>" + getDate(category) + "</td></tr>";
         tableString += "<tr><td></td><td></td><td>Bolus</td><td>Basal</td></tr>";
         groupByDate[category].forEach(function (memb, i) {
@@ -62,7 +62,7 @@ function getTime(dateTime) {
 function getDate(date) {
     var myDate = date.substr(0, 10);
 
-    return getDateFull(myDate);
+    return getDateFull(new Date(myDate));
 }
 
 var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -72,3 +72,6 @@ function getDateFull(date) {
 
 
 }
+
+
+

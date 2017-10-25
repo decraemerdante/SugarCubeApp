@@ -30,7 +30,7 @@ namespace MyDiabetesAPI.Controllers
 
             try
             {
-               List<Waarde> waarden = db.Waarde.Select(w => w).ToList();              
+               List<Waarde> waarden = db.Waarde.Select(w => w).OrderByDescending(w => w.Time).ToList();              
                return Ok(waarden);
                 
             }
@@ -55,7 +55,10 @@ namespace MyDiabetesAPI.Controllers
                         Waarde1 = waarde.Waarde1,
                        Bolus = waarde.Bolus,
                        Basal = waarde.Basal,
-                        Type = waarde.Type
+                        Type = waarde.Type,
+                        Date = waarde.Date,
+                        Time = waarde.Time,
+
                         
                     };
 
@@ -86,6 +89,8 @@ namespace MyDiabetesAPI.Controllers
                     oldWaarde.Bolus = changedWaarde.Bolus;
                     oldWaarde.Basal = changedWaarde.Basal;
                     oldWaarde.Type = changedWaarde.Type;
+                    oldWaarde.Date = changedWaarde.Date;
+                    oldWaarde.Time = changedWaarde.Time;
 
                     db.Waarde.Update(oldWaarde);
                     db.SaveChanges();
