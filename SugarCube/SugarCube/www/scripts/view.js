@@ -3,9 +3,9 @@
 function fillInTable(data) {
     var newData = data;
     var l = data.length;
-    var div = $("#waardeTable");
+    var div = $("#waardeDiv");
 
-    var tableString = "<tbody>";
+    var tableString = "<table id='waardeTable' class='ui-responsive bordered'><tbody>";
          
   
 
@@ -27,9 +27,11 @@ function fillInTable(data) {
 
         });
     });
-    tableString += "</tbody>";
-
+    tableString += "</tbody></table>" +
+        
+    div.html("");
     div.append(tableString);
+    $("#addButton").css("visibility", "visible");
 }
 
 
@@ -74,10 +76,7 @@ function getTime(dateTime) {
 }
 
 function getDate(date) {
-    console.log(date);
-    
- 
-    
+    console.log(date);    
     return getDateFull(new Date(date));
 }
 
@@ -95,8 +94,7 @@ function dateFormat(date) {
     newDaypart += 1;
 
     console.log(parts);
-    //please put attention to the month (parts[0]), Javascript counts months from 0:
-    // January - 0, February - 1, etc
+    
     console.log(new Date(parts[2], parts[1] - 1, parts[0]).toISOString().slice(0, 11));
     return new Date(parts[2], parts[1] -1, newDaypart.toString()).toISOString().slice(0, 10); 
 }
