@@ -39,7 +39,7 @@
             autoclose: false, // automatic close timepicker
             ampmclickable: true, // make AM PM clickable
             
-            aftershow: function () { },
+            aftershow: function () { }
                
         });
     }
@@ -52,18 +52,18 @@
     function onDeviceReady() {
         init();
 
-    };
+    }
     function submit(e) {
         e.preventDefault();
-        var e = document.getElementById("Type");
+        var t = document.getElementById("Type");
         var value = {
             Waarde1: $("#Value").val(),
             Bolus: $("#Bolus").val(),
             Basal: $("#Basal").val(),
             Date: $(".datepicker").val(),
             Time: $(".timepicker").val(),
-            Type: e.options[e.selectedIndex].value
-        }
+            Type: t.options[t.selectedIndex].value
+        };
 
         sendNewValue(JSON.stringify(value));
       

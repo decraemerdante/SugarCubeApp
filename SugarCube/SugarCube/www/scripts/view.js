@@ -15,26 +15,37 @@ function fillInTable(data) {
     
     Object.keys(groupByDate).sort().reverse().forEach(function (category) {
         
-        tableString += "<tr><td class='dates' colspan='4'>" + getDate(category) + "</td></tr>";
+        tableString += "<tr><td class='dates' colspan='5'>" + getDate(category) + "</td></tr>";
         tableString += "<tr><td></td><td></td><td>Bolus</td><td>Basal</td></tr>";
         groupByDate[category].forEach(function (memb, i) {
             
-            tableString += "<tr><td>" + getTime(memb.time) + "</td>" +                
+            tableString += "<tr><td>" + getTime(memb.time) + "</td>" +
                 "<td>" + memb.waarde1 + "</td>" +
                 "<td>" + memb.bolus + "</td>" +
-                "<td>" + memb.basal + "</td>" +
-                "</tr > "
+                "<td>" + memb.basal + "</td>" +      
+                "<td><a href='#'  ><i class='material-icons Details' id='" + memb.id + "'>keyboard_arrow_right</i></a></td>" +
+                "</tr > ";
 
         });
     });
-    tableString += "</tbody></table>" +
-        
+    tableString += "</tbody></table>";    
     div.html("");
     div.append(tableString);
+    $(".Details").on("click", details);
     $("#addButton").css("visibility", "visible");
 }
 
+function details(e) {
+    e.preventDefault();
+   
+    var id = e.target.id;
+   
+    console.log(id);
 
+    getSelectedValue(id);
+
+    window.location.href = "Details.html";
+}
 function getType(type) {
     switch (type) {
         case "B": return "Breakfast"; break;
@@ -64,7 +75,7 @@ function groupByDateNow(data) {
             return rv;
         }, {});
     };
-    return groupBy(newData, 'date')
+    return groupBy(newData, 'date');
     console.log(groubedByTeam);
 }
 

@@ -47,3 +47,23 @@ function sendNewValue(data) {
 
     });
 }
+
+function getSelectedValue(id) {
+    $.ajax({
+
+        url: host() + "/api/Diabetes/" + id,
+        type: "GET",
+        dataType: "json",
+        data: {
+            format: "json"
+        },
+        success: function (data) {
+            console.log(data);
+            fillInTimeDate(data);
+        },
+        error: function (xhr, message) {
+            console.log(xhr, message);
+        }
+
+    });
+}

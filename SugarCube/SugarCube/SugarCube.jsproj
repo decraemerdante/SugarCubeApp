@@ -85,6 +85,9 @@
     <Content Include="**\**" Exclude="**\platforms\**;**\bin\**;**\bld\**;**\node_modules\**;**\simulation\**;**\plugins\**;.gitignore;SugarCube.*" />
   </ItemGroup>
   <ItemGroup>
+    <Content Remove="www\scripts\view.js" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Update="config.xml">
       <SubType>Designer</SubType>
     </Content>
