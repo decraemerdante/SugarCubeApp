@@ -48,6 +48,28 @@ function sendNewValue(data) {
     });
 }
 
+function deleteValue(id) {
+    
+        $.ajax({
+
+            url: host() + "/api/Diabetes/" + id,
+            type: "DELETE",
+           
+            data: {
+                format: "json"
+            },
+            success: function (response) {
+                returnToIndex();
+               
+            },
+            error: function (xhr, message) {
+                console.log(xhr, message);
+            }
+
+        });
+    }
+
+
 function getSelectedValue(id) {
     $.ajax({
 
@@ -59,7 +81,7 @@ function getSelectedValue(id) {
         },
         success: function (data) {
             console.log(data);
-            fillInTimeDate(data);
+            createView(data);
         },
         error: function (xhr, message) {
             console.log(xhr, message);
