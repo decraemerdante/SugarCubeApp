@@ -23,7 +23,7 @@
 function init() {
    getSelectedValue(localStorage.getItem('id'));
    
-   console.log(data);
+
   
 
    
@@ -43,6 +43,7 @@ function createView(data) {
     $("#Value").val(data.waarde1);
     $("#Bolus").val(data.bolus);
     $("#Basal").val(data.basal);
+
    // $("#Value").validate()
 }
 
@@ -82,4 +83,11 @@ function fillInTimeDate(data) {
 
     });
 
+
+}
+
+
+function returnToIndex() {
+    Materialize.toast('Value Deleted', 10000);
+    window.location.href = "index.html";
 }

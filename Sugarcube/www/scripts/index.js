@@ -40,7 +40,7 @@ function fillInTable(data) {
     Object.keys(groupByDate).sort().reverse().forEach(function (category) {
 
         tableString += "<tr><td class='dates' colspan='5'>" + getDate(category) + "</td></tr>";
-        tableString += "<tr><td></td><td></td><td>Bolus</td><td>Basal</td></tr>";
+        tableString += "<tr><td></td><td></td><td>Bolus</td><td>Basal</td><td></td></tr>";
         groupByDate[category].forEach(function (memb, i) {
 
             tableString += "<tr><td>" + getTime(memb.time) + "</td>" +
@@ -127,10 +127,6 @@ function dateFormat(date) {
     var parts = date.split('/');
     var newDaypart = parseInt(parts[0]);
     newDaypart += 1;
-
- 
-
-    
     return new Date(parts[2], parts[1] - 1, newDaypart.toString()).toISOString().slice(0, 10);
 }
 

@@ -54,13 +54,13 @@ function deleteValue(id) {
 
             url: host() + "/api/Diabetes/" + id,
             type: "DELETE",
-            dataType: "json",
+           
             data: {
                 format: "json"
             },
             success: function (response) {
-              
-                window.location.href = "index.html";
+                returnToIndex();
+               
             },
             error: function (xhr, message) {
                 console.log(xhr, message);
