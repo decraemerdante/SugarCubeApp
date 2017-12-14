@@ -1,0 +1,44 @@
+.dates {
+    background-color: #ee6e73;
+    color: white;
+    text-align: right;
+}
+
+
+#waardeTable {
+    margin-top: 10%;
+    text-align: center;
+}
+
+#waardeTable p {
+        text-align: center;
+}
+
+.buttonsColor {
+    background-color: #ee6e73;
+   
+}
+
+.buttonsPos {
+    position: fixed;
+    bottom: 5%;
+    right: 5%;
+}
+
+.preloader-wrapper {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.focused {
+    font-size: 12px !important;
+    -webkit-transform: translateY(-140%);
+    -moz-transform: translateY(-140%);
+    -ms-transform: translateY(-140%);
+    -o-transform: translateY(-140%);
+    transform: translateY(-140%);
+}
