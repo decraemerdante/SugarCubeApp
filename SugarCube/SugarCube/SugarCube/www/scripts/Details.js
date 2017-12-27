@@ -42,22 +42,7 @@ function createView(data) {
     $('select').material_select();
     console.log(data.type);
 
-    switch(data.type) {
-        case "L":
-            $('.detailsSelect option[value=L]').attr('selected','selected');
-            break;
-        case "B":
-            $('.detailsSelect option[value=B]').attr('selected','selected');
-            break;
-        case "D":
-            $('.detailsSelect option[value=D]').attr('selected','selected');
-            break;
-        case "E":
-            $('.detailsSelect option[value=E]').attr('selected','selected');
-            break;
-
-
-    }
+    fillInSelect(data.type);
 
 
     $(".editButton").click(submit);
@@ -120,7 +105,7 @@ function submit(e) {
     e.preventDefault();
 
     console.log("hi");
-    var t = document.getElementById("Type");
+  
     var value = {
 
         Waarde1: $("#Value").val(),
@@ -128,13 +113,15 @@ function submit(e) {
         Basal: $("#Basal").val(),
         Date: $(".datepicker").val(),
         Time: $(".timepicker").val(),
-        Type: t.options[t.selectedIndex].value
+        Type: $("#Type").val()
     };
 
-    console.log($(".datepicker").val());
+
+
+    console.log($("#Type").val());
     console.log($(".timepicker").val());
 
-
+    fillInSelect($("#Type").val());
     editValue(JSON.stringify(value), localStorage.getItem('id'));
 
 
@@ -142,3 +129,10 @@ function submit(e) {
 
 
 }
+function fillInSelect(type) {
+    $('#Type').find('option[value=' + type + ']').prop('selected', true);
+    $("#Type").material_select();
+
+}
+
+

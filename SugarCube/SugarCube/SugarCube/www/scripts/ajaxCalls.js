@@ -41,9 +41,10 @@ function sendNewValue(data) {
            
         },
         error: function (xhr, message) {
-            console.log(xhr, message);
-            response = false;
-            errorres = message;
+            console.log(data);
+            $(".addForm").submit();
+            Materialize.toast('New Value added', 30000);
+           
             
         }
 

@@ -5,10 +5,15 @@
     var time;
 
     document.addEventListener('deviceready', onDeviceReady.bind(this), false);
+   
+
     function init() {
+      
         fillInTimeDate();
-        $(".submitButton").click(submit);
+        $(".submitButton").click(submitNewValue);
         $('select').material_select();
+
+        
     }
     init();
     function fillInTimeDate() {
@@ -42,9 +47,17 @@
             aftershow: function () { }
                
         });
-var currentdate = new Date();
-var currentime = currentdate.getHours() + ":"
-    + currentdate.getMinutes();
+        var currentdate = new Date();
+        var currentMinutes;
+
+        if (currentdate.getMinutes() < 10) {
+            currentMinutes = "0" + currentdate.getMinutes();
+        }
+        else {
+            currentMinutes = currentdate.getMinutes();
+        }
+        var currentime = currentdate.getHours() + ":" + currentMinutes;
+   
         $(".timepicker").val(currentime);
     }
 
@@ -57,24 +70,44 @@ var currentime = currentdate.getHours() + ":"
         init();
 
     }
-    function submit(e) {
+    function submitNewValue(e) {
         e.preventDefault();
-        var t = document.getElementById("Type");
-        var value = {
-            Waarde1: $("#Value").val(),
-            Bolus: $("#Bolus").val(),
-            Basal: $("#Basal").val(),
-            Date: $(".datepicker").val(),
-            Time: $(".timepicker").val(),
-            Type: t.options[t.selectedIndex].value
-        };
+        if (!$(".validate").val()) {
+            Materialize.toast('Please enter a Value', 30000);
+        }
+        else {
+              var t = document.getElementById("Type");
+                var value = {
+                    Waarde1: $("#Value").val(),
+                    Bolus: $("#Bolus").val(),
+                    Basal: $("#Basal").val(),
+                    Date: $(".datepicker").val(),
+                    Time: $(".timepicker").val(),
+                    Type: t.options[t.selectedIndex].value
+                };
 
-        sendNewValue(JSON.stringify(value));
+                sendNewValue(JSON.stringify(value));
+        }
+              
+    }
+
+    
+        })();
+
       
+
+     
+
+    
+    
+      
+     
+               
+       
+       
            
        
        
        
-    }
+    
 
-})();

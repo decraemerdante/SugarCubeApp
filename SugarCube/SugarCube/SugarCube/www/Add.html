@@ -22,26 +22,31 @@
     <header>
         <nav>
             <div class="nav-wrapper">
+                <ul class="left">
+                    <li><a href="index.html"><i class="material-icons">keyboard_arrow_left</i></a></li>
+                </ul>
                 <a href="#" class="brand-logo">SugarCube</a>
             </div>
         </nav>
     </header>
 
     <div class="row">
+        <p></p>
         <form class="col s12 addForm" action="index.html">
+       
             <div class="row">
                 <div class="input-field col s12">
-                    <input id="Value" type="text" class="validate">
-                    <label for="Value">Value</label>
+                    <input id="Value" type="text" class="validate" required="" aria-required="true">
+                    <label for="Value" >Value</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s6">
-                    <input id="Bolus" type="text" class="validate">
+                    <input id="Bolus" type="text" class="validate" required="" aria-required="true"> 
                     <label for="Bolus">Bolus</label>
                 </div>
                 <div class="input-field col s6">
-                    <input id="Basal" type="text" class="validate">
+                    <input id="Basal" type="text" class="validate" required="" aria-required="true">
                     <label for="Basal">Basal</label>
                 </div>
             </div>
@@ -57,7 +62,7 @@
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <select id="Type">
+                    <select id="Type" >
                         <option value="" disabled selected>Choose your type</option>
                         <option value="B">Breakfast</option>
                         <option value="L">Lunch</option>
@@ -76,7 +81,10 @@
             <i class="material-icons submitButton buttonsColor">done</i>
         </a>
                     <script src="scripts/jquery-3.2.1.min.js"></script>
+
+    <script src="scripts/jquery.validate.js"></script>
                     <script src="scripts/materialize.min.js"></script>
+    
                     <script src="scripts/host.js"></script>
                     <script src="scripts/ajaxCalls.js"></script>
                     <script src="scripts/add.js"></script>

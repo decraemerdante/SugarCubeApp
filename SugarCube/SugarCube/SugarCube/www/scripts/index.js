@@ -35,8 +35,7 @@ function fillInTable(data) {
 
     var groupByDate = groupByDateNow(newData);
    
-
-
+   
     Object.keys(groupByDate).sort().reverse().forEach(function (category) {
 
         tableString += "<tr><td class='dates' colspan='5'>" + getDate(category) + "</td></tr>";
